@@ -11,10 +11,9 @@ const Button = ({
   icon: Icon,
   variant = "primary",
   loading = false,
-  type = "button",
 }) => {
   const baseStyles =
-    "inline-flex items-center justify-center gap-1.5 md:gap-2 rounded-lg font-manrope font-semibold transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100 whitespace-nowrap";
+    "inline-flex items-center justify-center gap-1.5 md:gap-2 rounded-lg font-semibold transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100 whitespace-nowrap cursor-pointer";
 
   const sizeStyles = small
     ? "text-xs md:text-sm px-3 py-1.5"
@@ -43,7 +42,6 @@ const Button = ({
 
   return (
     <button
-      type={type}
       disabled={disabled || loading}
       onClick={onClick}
       className={`
