@@ -34,8 +34,8 @@ const Button = ({
       ? "border-2 border-accent text-accent hover:bg-accent hover:text-black"
       : "bg-accent text-black hover:bg-accent/90 shadow-md shadow-accent/20 border-2 border-transparent",
 
-    ghost:
-      "bg-transparent text-primary hover:bg-base-200 border-2 border-transparent",
+    blackOutline:
+      "border-2 border-black text-black hover:bg-black hover:text-white",
 
     error: "bg-error text-white hover:bg-error/90 border-2 border-transparent",
   };
