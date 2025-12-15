@@ -9,8 +9,10 @@ const MainLayout = () => {
     <div className="bg-base-100 min-h-screen">
       <Navbar></Navbar>
       
-      <div className='pt-24 min-h-[calc(100vh-68px)]'>
-        <Outlet />
+      <div className='min-h-[calc(100vh-68px)]'>
+        <Container>
+          <Outlet />
+        </Container>
       </div>
 
       <Footer></Footer>
