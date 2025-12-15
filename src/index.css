@@ -71,6 +71,15 @@
   }
 }
 
+html, body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+  display: none;
+}
+
 /* for register page (role select) */
 .register-role {
   @apply border-primary bg-primary/10 text-primary font-bold;
