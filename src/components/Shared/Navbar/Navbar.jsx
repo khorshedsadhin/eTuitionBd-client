@@ -10,7 +10,7 @@ const Navbar = () => {
 
   const activeStyle = ({ isActive }) =>
     isActive
-      ? "flex items-center gap-2 text-primary bg-primary/10 font-bold px-4 py-2 rounded-lg transition-all"
+      ? "flex items-center gap-2 text-primary bg-primary/10 font-medium px-4 py-2 rounded-lg transition-all"
       : "flex items-center gap-2 text-base-content/70 hover:text-primary hover:bg-base-200 px-4 py-2 rounded-lg font-medium transition-all";
 
   const navItems = (
