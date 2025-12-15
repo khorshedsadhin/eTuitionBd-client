@@ -94,14 +94,14 @@ const Login = () => {
 							)}
 							<br></br>
 
-							<label className="label">
+							{/* <label className="label">
 								<Link
 									to={"#"}
 									className="label-text-alt link link-hover text-primary"
 								>
 									Forgot password?
 								</Link>
-							</label>
+							</label> */}
 						</div>
 
 						{/* submit */}
