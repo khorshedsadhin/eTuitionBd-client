@@ -70,11 +70,11 @@ const Navbar = () => {
         ) : (
           <div className="flex items-center gap-2">
             <Link to="/login">
-              <Button label="Login" variant="accent" small={true} icon={FiLogIn} />
+              <Button label="Login" variant="ghost" small={true} icon={FiLogIn} />
             </Link>
 
             <Link to="/register">
-              <Button label="Register" variant="secondary" small={true} icon={FiUserPlus} />
+              <Button label="Register" variant="primary" small={true} icon={FiUserPlus} />
             </Link>
           </div>
         )}

@@ -81,7 +81,7 @@ const Hero = () => {
               <Link to="/register">
                 <Button 
                   label="Become a Tutor" 
-                  variant="blackOutline" 
+                  variant="ghost" 
                   icon={FiUserPlus} 
                 />
               </Link>

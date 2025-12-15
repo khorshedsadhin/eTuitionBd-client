@@ -131,14 +131,14 @@ const Register = () => {
     "
 								{...register("image", { required: "Image is required" })}
 							/>
-							<div className='mt-1 text-xs text-gray-400'>
-                PNG, JPG or JPEG (max 2MB)
-                {errors.image && (
-								<div className="mt-1 text-xs text-error">
-									{errors.image.message}
-								</div>
-							)}
-              </div>
+							<div className="mt-1 text-xs text-gray-400">
+								PNG, JPG or JPEG (max 2MB)
+								{errors.image && (
+									<div className="mt-1 text-xs text-error">
+										{errors.image.message}
+									</div>
+								)}
+							</div>
 						</div>
 
 						{/* Password */}
@@ -151,13 +151,13 @@ const Register = () => {
 									type={showPassword ? "text" : "password"}
 									placeholder="Create a password"
 									className="input input-bordered w-full rounded-lg pr-10 focus:border-primary focus:outline-none"
-                  {...register("password", {
-                    required: "Password is required",
-                    minLength: {
-                      value: 6,
-                      message: "Password must be at least 6 characters."
-                    },
-                  })}
+									{...register("password", {
+										required: "Password is required",
+										minLength: {
+											value: 6,
+											message: "Password must be at least 6 characters.",
+										},
+									})}
 								/>
 								<button
 									type="button"
@@ -167,7 +167,7 @@ const Register = () => {
 									{showPassword ? <FiEyeOff size={18} /> : <FiEye size={18} />}
 								</button>
 							</div>
-              {errors.password && (
+							{errors.password && (
 								<span className="mt-1 text-xs text-error">
 									{errors.password.message}
 								</span>

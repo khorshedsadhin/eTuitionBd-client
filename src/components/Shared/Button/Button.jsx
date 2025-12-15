@@ -37,6 +37,9 @@ const Button = ({
     blackOutline:
       "border-2 border-black text-black hover:bg-black hover:text-white",
 
+    ghost:
+      "bg-base-200 text-primary hover:bg-base-300 border-2 border-transparent",
+
     error: "bg-error text-white hover:bg-error/90 border-2 border-transparent",
   };
 
