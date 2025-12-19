@@ -1,12 +1,15 @@
 import React from "react";
 import { NavLink, Link } from "react-router";
-import { FiMenu, FiLogIn, FiUserPlus, FiLayout } from "react-icons/fi";
+import { FiMenu, FiLogIn, FiUserPlus, FiLayout, FiLogOut, FiUser } from "react-icons/fi";
 import Logo from "../Logo/Logo";
 import Button from "../Button/Button";
 
-
 const Navbar = () => {
   const user = {};
+
+  const handleLogOut = () => {
+    console.log("Logout Clicked");
+  };
 
   const activeStyle = ({ isActive }) =>
     isActive
@@ -64,9 +67,33 @@ const Navbar = () => {
       {/* End: Action Buttons */}
       <div className="navbar-end gap-3">
         {user ? (
-          <Link to="/dashboard">
-             <Button label="Dashboard" icon={FiLayout} small />
-          </Link>
+          <div className="flex items-center gap-2">
+             <Link to="/dashboard">
+              <Button label="Dashboard" icon={FiLayout} small />
+            </Link>
+
+            <div className="dropdown dropdown-end">
+              <label tabIndex={0} className="btn btn-ghost btn-circle avatar border-0">
+                <div className="w-10 rounded-full">
+                  <img 
+                    src={user?.photoURL || "https://i.ibb.co/MgsTCcv/avater.jpg"}
+                    alt="User Profile" 
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+              </label>
+              <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-1 p-2 space-y-2 shadow bg-base-100 rounded-box w-52 border border-base-200">
+                
+                <Link to={"/dashboard/profile"}>
+                  <Button label={'Profile'} icon={FiUser} fullWidth={true} variant="ghost" small/>
+                </Link>
+                <li>
+                  <Button onClick={handleLogOut} icon={FiLogOut} label={'Logout'} fullWidth={true} variant="error" small/>
+                </li>
+                
+              </ul>
+            </div>
+          </div>
         ) : (
           <div className="flex items-center gap-2">
             <Link to="/login">

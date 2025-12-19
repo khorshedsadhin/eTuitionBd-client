@@ -100,7 +100,7 @@ const Hero = () => {
               <img
                 src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070&auto=format&fit=crop"
                 alt="Students learning"
-                className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                className="h-full w-full object-cover"
               />
             </div>
           </motion.div>
