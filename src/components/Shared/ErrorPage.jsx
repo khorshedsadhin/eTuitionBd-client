@@ -34,7 +34,7 @@ const ErrorPage = () => {
           <div className='flex items-center w-full mt-6 gap-x-3 shrink-0 sm:w-auto'>
             <Button onClick={() => navigate(-1)} variant='primary' icon={FaArrowLeft} label={'Go back'} />
 
-            <Button label={'Take Me Home'} variant='secondary' outline={true} onClick={() => navigate('/')} />
+            <Button label={'Take Me Home'} variant='ghost' outline={true} onClick={() => navigate('/')} />
           </div>
         </div>
       </div>

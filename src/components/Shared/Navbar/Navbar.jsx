@@ -6,7 +6,7 @@ import Button from "../Button/Button";
 
 
 const Navbar = () => {
-  const user = null;
+  const user = {};
 
   const activeStyle = ({ isActive }) =>
     isActive

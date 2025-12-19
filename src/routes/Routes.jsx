@@ -8,6 +8,7 @@ import Tuitions from "../pages/Tuitions/Tuitions";
 import Tutors from "../pages/Tutors/Tutors";
 import About from "../pages/About/About";
 import Contact from "../pages/Contact/Contact";
+import DashboardLayout from "../layouts/DashboardLayout";
 
 export const router = createBrowserRouter([
   {
@@ -39,4 +40,8 @@ export const router = createBrowserRouter([
   },
   { path: '/login', element: <Login /> },
   { path: '/register', element: <Register /> },
+  {
+    path: '/dashboard',
+    element: <DashboardLayout />
+  }
 ])
