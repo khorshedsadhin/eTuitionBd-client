@@ -6,29 +6,26 @@ import FadeIn from "../../components/Shared/FadeIn";
 const About = () => {
 	return (
 		<div className="min-h-screen bg-base-100 text-base-content">
-			<section className="px-6 py-20 text-center">
-				<motion.div
-					initial={{ opacity: 0, y: 20 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.5, ease: "easeOut" }}
-					className="mx-auto max-w-3xl"
-				>
-					<h4 className="mb-4 font-bold uppercase tracking-widest text-secondary text-sm">
-						About eTuitionBD
-					</h4>
-					<h1 className="leading-tight text-primary">
-						Making Quality Education <br className="hidden md:block" />
-						Accessible to Everyone.
-					</h1>
-					<p className="mt-6 text-lg text-base-content/60 leading-relaxed">
-						We are on a mission to bridge the gap between students seeking
-						knowledge and tutors ready to share it. A simple, secure connection
-						for a brighter future.
-					</p>
-				</motion.div>
-			</section>
+			<FadeIn>
+				<section className="px-6 py-20 text-center">
+					<div className="mx-auto max-w-3xl">
+						<h4 className="mb-4 font-bold uppercase tracking-widest text-secondary text-sm">
+							About eTuitionBD
+						</h4>
+						<h1 className="leading-tight text-primary">
+							Making Quality Education <br className="hidden md:block" />
+							Accessible to Everyone.
+						</h1>
+						<p className="mt-6 text-lg text-base-content/60 leading-relaxed">
+							We are on a mission to bridge the gap between students seeking
+							knowledge and tutors ready to share it. A simple, secure
+							connection for a brighter future.
+						</p>
+					</div>
+				</section>
+			</FadeIn>
 
-			<FadeIn delay={0.2}>
+			<FadeIn delay={0.3}>
 				<section className="px-6 pb-20">
 					<div className="mx-auto max-w-6xl">
 						<div className="overflow-hidden rounded-3xl bg-base-200">
