@@ -5,10 +5,29 @@ import MenuItem from "./MenuItem";
 const StudentMenu = () => {
   return (
     <>
-      <MenuItem label="My Tuitions" address="/dashboard/my-tuitions" icon={FiGrid} />
-      <MenuItem label="Post New Tuition" address="/dashboard/post-tuition" icon={FiPlusSquare} />
-      <MenuItem label="Applied Tutors" address="/dashboard/applied-tutors" icon={FiUsers} />
-      <MenuItem label="Payments" address="/dashboard/payments" icon={FiDollarSign} />
+      <MenuItem
+        label="My Tuitions"
+        address="/dashboard/student/my-tuitions"
+        icon={FiGrid}
+      />
+
+      <MenuItem
+        label="Post New Tuition"
+        address="/dashboard/student/post-tuition"
+        icon={FiPlusSquare}
+      />
+
+      <MenuItem
+        label="Applied Tutors"
+        address="/dashboard/student/applied-tutors"
+        icon={FiUsers}
+      />
+
+      <MenuItem
+        label="Payments"
+        address="/dashboard/student/payments"
+        icon={FiDollarSign}
+      />
     </>
   );
 };

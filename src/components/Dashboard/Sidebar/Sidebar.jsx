@@ -6,9 +6,10 @@ import MenuItem from "./Menu/MenuItem";
 import StudentMenu from "./Menu/StudentMenu";
 import TutorMenu from "./Menu/TutorMenu";
 import AdminMenu from "./Menu/AdminMenu";
+import useRole from "../../../hooks/useRole";
 
 const Sidebar = ({ isActive, setIsActive }) => {
-  const role = "student"; 
+  const [role, isRoleLoading] = useRole();
 
   const handleToggle = () => {
     setIsActive(!isActive);
@@ -35,13 +36,9 @@ const Sidebar = ({ isActive, setIsActive }) => {
           <nav className="flex-1 space-y-2 mt-4">
 
             {/* Role Based Menus */}
-            {/* {role === "student" && <StudentMenu />}
+            {role === "student" && <StudentMenu />}
             {role === "tutor" && <TutorMenu />}
-            {role === "admin" && <AdminMenu />} */}
-
-            <StudentMenu />
-            <TutorMenu />
-            <AdminMenu />
+            {role === "admin" && <AdminMenu />}
 
           </nav>
         </div>

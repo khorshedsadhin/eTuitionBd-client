@@ -9,6 +9,12 @@ import Tutors from "../pages/Tutors/Tutors";
 import About from "../pages/About/About";
 import Contact from "../pages/Contact/Contact";
 import DashboardLayout from "../layouts/DashboardLayout";
+import PrivateRoute from "./PrivateRoute";
+import MyTuitions from "../pages/Dashboard/Student/MyTuitions";
+import RoleRedirect from "../components/Dashboard/RoleRedirect";
+import PostTuition from "../pages/Dashboard/Student/PostTuition";
+import AppliedTutors from "../pages/Dashboard/Student/AppliedTutors";
+import Payments from "../pages/Dashboard/Student/Payments";
 
 export const router = createBrowserRouter([
   {
@@ -42,6 +48,28 @@ export const router = createBrowserRouter([
   { path: '/register', element: <Register /> },
   {
     path: '/dashboard',
-    element: <DashboardLayout />
+    element: <PrivateRoute><DashboardLayout /></PrivateRoute>,
+    children: [
+      {
+        index: true,
+        element: <PrivateRoute><RoleRedirect /></PrivateRoute>
+      },
+      {
+        path: 'student/my-tuitions',
+        element: <PrivateRoute><MyTuitions /></PrivateRoute>
+      },
+      {
+        path: 'student/post-tuition',
+        element: <PrivateRoute><PostTuition /></PrivateRoute>
+      },
+      {
+        path: 'student/applied-tutors',
+        element: <PrivateRoute><AppliedTutors /></PrivateRoute>
+      },
+      {
+        path: 'student/payments',
+        element: <PrivateRoute><Payments /></PrivateRoute>
+      }
+    ]
   }
 ])
