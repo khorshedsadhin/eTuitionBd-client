@@ -65,7 +65,7 @@ const Tutors = () => {
 
 									<div className="w-full">
 										<a
-											href={`mailto:${tutor.email}`}
+											href={`#`}
 											className="btn btn-outline btn-primary btn-sm w-full gap-2"
 										>
 											<FiMail /> Contact
