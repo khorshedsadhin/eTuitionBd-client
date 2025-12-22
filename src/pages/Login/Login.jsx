@@ -1,25 +1,58 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router";
+import { Link, Navigate, useLocation, useNavigate } from "react-router";
 import { motion } from "framer-motion";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { FaGoogle } from "react-icons/fa";
 import Button from "../../components/Shared/Button/Button";
+import useAuth from "../../hooks/useAuth";
+import LoadingSpinner from "../../components/Shared/LoadingSpinner";
+import toast from "react-hot-toast";
+import { saveOrUpdateUser } from "../../utils";
 
 const Login = () => {
+  const { signIn, signInWithGoogle, loading, user, setLoading } = useAuth();
 	const [showPassword, setShowPassword] = useState(false);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state || '/';
+
 	const {
-		register,
-		handleSubmit,
+  register,
+  handleSubmit,
 		formState: { errors },
 	} = useForm();
 
-	const onSubmit = (data) => {
-		console.log("Login Data:", data);
+  if(loading) return <LoadingSpinner />
+  if(user) return <Navigate to={from} replace={true} />
+    
+	const onSubmit = async(data) => {
+    try {
+      await signIn(data.email, data.password);
+      toast.success("Login Successful!");
+      navigate(from, {replace: true});
+    }
+    catch(err) {
+      toast.error(err?.message);
+      setLoading(false);
+    }
 	};
 
-	const handleGoogleLogin = () => {
-		console.log("Google Login Clicked");
+	const handleGoogleLogin = async() => {
+    try {
+      const defaultRole = "student";
+
+      const { user } = await signInWithGoogle();
+      await saveOrUpdateUser({ name: user?.displayName, email: user?.email, image: user?.photoURL, role: defaultRole });
+
+      toast.success("Login Successful!");
+      navigate(from, {replace: true});
+    }
+    catch(err) {
+      toast.error(err?.message);
+      setLoading(false);
+    }
 	};
 
 	return (

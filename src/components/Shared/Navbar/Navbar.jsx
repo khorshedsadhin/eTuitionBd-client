@@ -3,13 +3,10 @@ import { NavLink, Link } from "react-router";
 import { FiMenu, FiLogIn, FiUserPlus, FiLayout, FiLogOut, FiUser } from "react-icons/fi";
 import Logo from "../Logo/Logo";
 import Button from "../Button/Button";
+import useAuth from "../../../hooks/useAuth";
 
 const Navbar = () => {
-  const user = {};
-
-  const handleLogOut = () => {
-    console.log("Logout Clicked");
-  };
+  const { user, logOut } = useAuth();
 
   const activeStyle = ({ isActive }) =>
     isActive
@@ -88,7 +85,7 @@ const Navbar = () => {
                   <Button label={'Profile'} icon={FiUser} fullWidth={true} variant="ghost" small/>
                 </Link>
                 <li>
-                  <Button onClick={handleLogOut} icon={FiLogOut} label={'Logout'} fullWidth={true} variant="error" small/>
+                  <Button onClick={logOut} icon={FiLogOut} label={'Logout'} fullWidth={true} variant="error" small/>
                 </li>
                 
               </ul>

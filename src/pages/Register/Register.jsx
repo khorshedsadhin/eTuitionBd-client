@@ -1,26 +1,73 @@
 import React, { useState } from "react";
-import { Link } from "react-router";
+import { Link, Navigate, useLocation, useNavigate } from "react-router";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { motion } from "framer-motion";
 import { FaGoogle } from "react-icons/fa";
 import Button from "../../components/Shared/Button/Button";
 import { useForm } from "react-hook-form";
+import useAuth from "../../hooks/useAuth";
+import { imageUpload, saveOrUpdateUser } from "../../utils";
+import { toast } from 'react-hot-toast'
+import LoadingSpinner from "../../components/Shared/LoadingSpinner";
 
 const Register = () => {
+  const { createUser, updateUserProfile, signInWithGoogle, loading, setLoading, user } = useAuth();
 	const [showPassword, setShowPassword] = useState(false);
 	const [role, setRole] = useState("student");
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state || '/';
+
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 	} = useForm();
 
-	const onSubmit = (data) => {
-		console.log(data);
+  if(loading) return <LoadingSpinner />
+  if(user) return <Navigate to={from} replace={true} />
+
+	const onSubmit = async (data) => {
+    const { name, image, email, password } = data;
+    const imageFile = image[0];
+
+    try {
+      const imageURL = await imageUpload(imageFile);
+      
+      //1. User Registration
+      const result = await createUser(email, password);
+      await saveOrUpdateUser({ name, email, image: imageURL, role });
+
+      //3. Save username & profile photo
+      await updateUserProfile(
+        name,
+        imageURL
+      )
+
+      navigate(from, { replace: true })
+      toast.success('Signup Successful')
+    }
+
+    catch(err) {
+      toast.error(err?.message);
+      setLoading(false);
+    }
 	};
 
-	const handleGoogleRegister = () => {
-		console.log("Google Register Clicked");
+	const handleGoogleRegister = async() => {
+		try {
+      const defaultRole = "student";
+
+      const { user } = await signInWithGoogle()
+      await saveOrUpdateUser({ name: user?.displayName, email: user?.email, image: user?.photoURL, role: defaultRole });
+
+      navigate(from, { replace: true })
+      toast.success('Signup Successful')
+    } catch (err) {
+      toast.error(err?.message);
+      setLoading(false);
+    }
 	};
 
 	return (
@@ -107,6 +154,24 @@ const Register = () => {
 								</span>
 							)}
 						</div>
+
+            {/* Phone Number */}
+            {/* <div className="form-control">
+              <label className="label">
+                <span className="label-text font-medium">Phone Number</span>
+              </label>
+              <input
+                type="tel"
+                placeholder="01234567890"
+                className="input input-bordered w-full rounded-lg focus:border-primary focus:outline-none"
+                {...register("phone", { required: "Phone number is required" })}
+              />
+              {errors.phone && (
+                <span className="mt-1 text-xs text-error">
+                  {errors.phone.message}
+                </span>
+              )}
+            </div> */}
 
 						{/* Image Upload */}
 						<div className="form-control">
