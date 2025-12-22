@@ -18,6 +18,9 @@ import Payments from "../pages/Dashboard/Student/Payments";
 import MyApplications from "../pages/Dashboard/Tutor/MyApplications";
 import OngoingTuituions from "../pages/Dashboard/Tutor/OngoingTuituions";
 import Revenue from "../pages/Dashboard/Tutor/Revenue";
+import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
+import ManageTuitions from "../pages/Dashboard/Admin/ManageTuitions";
+import Reports from "../pages/Dashboard/Admin/Reports";
 
 export const router = createBrowserRouter([
   {
@@ -84,7 +87,19 @@ export const router = createBrowserRouter([
       {
         path: 'tutor/revenue',
         element: <PrivateRoute><Revenue /></PrivateRoute>
-      }
+      },
+      {
+        path: 'admin/users',
+        element: <PrivateRoute><ManageUsers /></PrivateRoute>
+      },
+      {
+        path: 'admin/manage-tuitions',
+        element: <PrivateRoute><ManageTuitions /></PrivateRoute>
+      },
+      {
+        path: 'admin/reports',
+        element: <PrivateRoute><Reports /></PrivateRoute>
+      },
     ]
   }
 ])
