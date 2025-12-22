@@ -21,6 +21,7 @@ import Revenue from "../pages/Dashboard/Tutor/Revenue";
 import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
 import ManageTuitions from "../pages/Dashboard/Admin/ManageTuitions";
 import Reports from "../pages/Dashboard/Admin/Reports";
+import ProfileSettings from "../pages/Dashboard/common/ProfileSettings";
 
 export const router = createBrowserRouter([
   {
@@ -59,6 +60,10 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <PrivateRoute><RoleRedirect /></PrivateRoute>
+      },
+      {
+        path: 'profile',
+        element: <PrivateRoute><ProfileSettings /></PrivateRoute>
       },
       {
         path: 'student/my-tuitions',

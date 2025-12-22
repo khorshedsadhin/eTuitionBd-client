@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router";
+import { Link, Navigate, replace, useNavigate } from "react-router";
 import { FiLogOut, FiPieChart, FiUser } from "react-icons/fi";
 import Logo from "../../Shared/Logo/Logo";
 import MenuItem from "./Menu/MenuItem";
@@ -7,16 +7,20 @@ import StudentMenu from "./Menu/StudentMenu";
 import TutorMenu from "./Menu/TutorMenu";
 import AdminMenu from "./Menu/AdminMenu";
 import useRole from "../../../hooks/useRole";
+import useAuth from "../../../hooks/useAuth";
 
 const Sidebar = ({ isActive, setIsActive }) => {
+  const { logOut } = useAuth();
+  const navigate = useNavigate();
   const [role, isRoleLoading] = useRole();
 
   const handleToggle = () => {
     setIsActive(!isActive);
   };
 
-  const handleLogOut = () => {
-    console.log("Logging out...");
+  const handleLogOut = async() => {
+    await logOut();
+    navigate('/', { replace: true });
   };
 
   return (
