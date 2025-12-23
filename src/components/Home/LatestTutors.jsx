@@ -1,71 +1,83 @@
-import React from "react";
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-import { Link } from "react-router";
-import { motion } from "framer-motion";
-import LoadingSpinner from "../Shared/LoadingSpinner";
+import React from 'react';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+import { Link } from 'react-router';
+import LoadingSpinner from '../../components/Shared/LoadingSpinner';
+import Button from '../../components/Shared/Button/Button';
+import FadeIn from '../Shared/FadeIn';
 
 const LatestTutors = () => {
-	const { data: latestTutors = [], isLoading } = useQuery({
-		queryKey: ["home-tutors"],
-		queryFn: async () => {
-			const { data } = await axios.get(
-				`${import.meta.env.VITE_API_URL}/home/tutors`
-			);
-			return data;
-		},
-	});
+  const { data: latestTutors = [], isLoading } = useQuery({
+    queryKey: ["home-tutors"],
+    queryFn: async () => {
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_API_URL}/home/tutors`
+      );
+      return data;
+    },
+  });
 
-	if (isLoading) return <LoadingSpinner />;
+  if (isLoading) return <LoadingSpinner />;
 
-	return (
-		<section className="py-20 bg-base-200/50 font-manrope">
-			<div className="container mx-auto px-4">
-				<div className="text-center mb-12">
-					<span className="text-secondary font-bold text-sm uppercase tracking-wider">
-						Expertise
-					</span>
-					<h2 className="text-3xl font-bold text-primary mt-2">
-						Meet Our Top Tutors
-					</h2>
-				</div>
+  return (
+    <section className="py-16 bg-base-200/30">
+        
+        {/* Header */}
+        <div className="text-center mb-12 max-w-2xl mx-auto px-4">
+          <span className="inline-block rounded-full bg-primary/10 px-5 py-2 text-sm font-bold text-primary mb-4 uppercase tracking-wide">
+            Expertise
+          </span>
+          <h2 className="font-bold text-base-content mt-2">
+            Meet Our Top Tutors
+          </h2>
+          <p className="text-base-content/70 mt-4 text-lg">
+             Connect with highly qualified instructors ready to help you achieve your goals.
+          </p>
+        </div>
 
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-					{latestTutors.map((tutor, index) => (
-						<motion.div
-							key={tutor._id}
-							initial={{ opacity: 0, scale: 0.8 }}
-							whileInView={{ opacity: 1, scale: 1 }}
-							transition={{ duration: 0.5, delay: index * 0.1 }}
-							viewport={{ once: true }}
-							className="bg-base-100 p-6 rounded-2xl shadow-lg border border-base-200 text-center hover:shadow-2xl transition-all"
-						>
-							<div className="avatar mb-4">
-								<div className="w-24 h-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-									<img
-										src={tutor.image || "https://i.ibb.co/MgsTCcv/avater.jpg"}
-										alt={tutor.name}
-									/>
-								</div>
-							</div>
-							<h3 className="text-xl font-bold text-primary">{tutor.name}</h3>
-							<p className="text-sm text-secondary uppercase font-semibold mt-1">
-								Tutor
-							</p>
-							<div className="divider my-2 opacity-50"></div>
-							<p className="text-xs text-base-content/60 mb-4">{tutor.email}</p>
-							<Link
-								to="/tutors"
-								className="btn btn-sm btn-outline btn-primary w-full"
-							>
-								View Profile
-							</Link>
-						</motion.div>
-					))}
-				</div>
-			</div>
-		</section>
-	);
+        {/* Grid */}
+        <FadeIn>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {latestTutors.map((tutor) => (
+            <div
+              key={tutor._id}
+              className="group bg-base-100 p-6 rounded-2xl border border-base-200 shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center"
+            >
+              <div className="avatar mb-4">
+                <div className="w-24 h-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 overflow-hidden">
+                  <img
+                    src={tutor.image || "https://i.ibb.co/MgsTCcv/avater.jpg"}
+                    alt={tutor.name}
+                    className="object-cover w-full h-full transition-transform duration-500"
+                  />
+                </div>
+              </div>
+              
+              <h3 className="text-lg font-bold text-base-content group-hover:text-primary transition-colors">
+                {tutor.name}
+              </h3>
+              
+              <p className="text-sm font-medium text-secondary mt-1 uppercase tracking-wide">
+                {"Tutor"}
+              </p>
+              
+              <div className="divider my-4 w-1/2 mx-auto opacity-50"></div>
+              
+              <p className="text-xs text-base-content/60 mb-6 truncate w-full px-2">
+                {tutor.email}
+              </p>
+              
+              <Link to="/tutors" className="w-full mt-auto">
+                 <Button label="View Profile" variant="primary" fullWidth small />
+              </Link>
+            </div>
+          ))}
+        </div>
+        </FadeIn>
+        
+    </section>
+  );
 };
 
 export default LatestTutors;

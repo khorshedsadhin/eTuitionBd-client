@@ -45,12 +45,6 @@ const Hero = () => {
             className="flex flex-col text-center lg:text-left"
           >
 
-            <motion.div variants={itemVariants}>
-              <span className="mb-4 inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary">
-                #1 Tuition Platform in Bangladesh
-              </span>
-            </motion.div>
-
             <motion.h1 
               variants={itemVariants} 
               className="text-base-content"
