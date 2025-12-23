@@ -144,7 +144,7 @@ const TuitionDetails = () => {
 								/>
 							)}
 						</div>
-					) : role === "student" ? (
+					) : role === "student" || role === "admin" ? (
 						<div className="text-sm font-medium text-warning bg-warning/10 px-4 py-2 rounded-lg">
 							Login as a Tutor to apply
 						</div>
