@@ -1,16 +1,28 @@
-# React + Vite
+# eTuitionBD 🎓
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a web platform where Students can find Tutors and Tutors can find jobs. It helps manage the whole hiring process easily!
 
-Currently, two official plugins are available:
+### 🔗 Live Link
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**[Click Here to Visit Website](https://etuitionbd-76dd4.web.app/)**
 
-## React Compiler
+###  Key Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* **Authentication:** Login and Sign up using Firebase.
+* **Student Dashboard:** Post tuition jobs, view applications, and hire tutors.
+* **Tutor Dashboard:** Browse jobs, apply for tuitions, and view revenue.
+* **Admin Dashboard:** Manage all users, change roles, and view site reports.
+* **Notifications:** Cool alerts and toast messages.
+* **Responsive:** Works on mobile and desktop.
 
-## Expanding the ESLint configuration
+###  Packages Used
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+I used these libraries to build the project:
+
+* **Frontend:** React, React Router
+* **Styling:** Tailwind CSS, DaisyUI
+* **Data Fetching:** TanStack Query, Axios
+* **Authentication:** Firebase
+* **Forms:** React Hook Form
+* **Animations:** Framer Motion
+* **Alerts:** SweetAlert2, React Hot Toast
