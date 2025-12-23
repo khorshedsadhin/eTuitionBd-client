@@ -22,6 +22,7 @@ import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
 import ManageTuitions from "../pages/Dashboard/Admin/ManageTuitions";
 import Reports from "../pages/Dashboard/Admin/Reports";
 import ProfileSettings from "../pages/Dashboard/common/ProfileSettings";
+import TuitionDetails from "../pages/TuitionDetails/TuitionDetails";
 
 export const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ export const router = createBrowserRouter([
       {
         path: '/tuitions',
         element: <Tuitions />
+      },
+      {
+        path: '/tuition/:id',
+        element: <TuitionDetails />
       },
       {
         path: '/tutors',
