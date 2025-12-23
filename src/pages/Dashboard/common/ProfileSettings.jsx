@@ -7,8 +7,10 @@ import { imageUpload } from "../../../utils";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Button from "../../../components/Shared/Button/Button";
 import FadeIn from "../../../components/Shared/FadeIn";
+import useRole from "../../../hooks/useRole";
 
 const ProfileSettings = () => {
+  const [role, isRoleLoading] = useRole();
 	const { user, updateUserProfile, setLoading } = useAuth();
 	const axiosSecure = useAxiosSecure();
 	const [uploading, setUploading] = useState(false);
@@ -77,7 +79,7 @@ const ProfileSettings = () => {
 
 						<div className="mt-6 w-full">
 							<div className="badge badge-primary badge-outline w-full py-3 capitalize">
-								Role: {user?.role || "Student"}
+								Role: {role}
 							</div>
 						</div>
 					</div>
